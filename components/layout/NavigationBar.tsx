@@ -28,7 +28,7 @@ export default function NavigationBar({ handleShowRegister = emptyFunc, handleSh
   const guessLinks = (
     <Nav className="ml-auto">
       <Nav.Link onClick={handleShowRegister}>Sign Up</Nav.Link>
-      <Nav.Link onClick={handleShow}>Login </Nav.Link>
+      <Nav.Link onClick={handleShow}>Login</Nav.Link>
     </Nav>
   )
 
