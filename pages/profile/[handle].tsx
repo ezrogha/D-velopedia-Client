@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Router from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-
-import NavigationBar from '../../components/layout/NavigationBar';
-import LoginModal from '../../components/layout/LoginModal';
-import RegisterModal from '../../components/layout/RegisterModal';
 
 import { getProfilebyHandle } from '../../store/actions/profileActions';
 
@@ -19,14 +15,6 @@ import ProfileCredentials from '../../components/layout/profile/ProfileCredentia
 import ProfileGithub from '../../components/layout/profile/ProfileGithub';
 
 export default () => {
-  const [show, setShow] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const handleCloseRegister = () => setShowRegister(false);
-  const handleShowRegister = () => setShowRegister(true);
 
   const router = useRouter()
   const { handle } = router.query
@@ -57,16 +45,10 @@ export default () => {
   }
 
   return (
-    <>
-      <NavigationBar show={show} handleClose={handleClose} showRegister={showRegister} handleCloseRegister={handleCloseRegister} handleShowRegister={handleShowRegister} handleShow={handleShow} />
+    <NavFooter>
       <Container>
         {renderProfile}
       </Container>
-      <footer className="bg-dark text-white py-4 mt-5 text-center">
-        <span>Copyright &copy; {new Date().getFullYear()} D-velopedia</span>
-      </footer>
-      <LoginModal show={show} handleClose={handleClose} />
-      <RegisterModal showRegister={showRegister} handleCloseRegister={handleCloseRegister} handleShowLogin={handleShow} />
-    </>
+    </NavFooter>
   )
 }
